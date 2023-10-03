@@ -13,7 +13,7 @@ public class PayServiceApplication {
 
 	public static void main(String[] args) {
 		TransferService transferService = new TransferService(new AccountRepository(new JdbcTemplate()));
-		transferService.transferMoney(1,2,new BigDecimal(200));
+		transferService.transferMoney(1,2,new BigDecimal(100));
 
 	}
 
