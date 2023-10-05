@@ -1,5 +1,5 @@
 create table account (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id INT NOT NULL,
     name VARCHAR(50) NOT NULL,
-    amount DOUBLE NOT NULL
+    amount INT NOT NULL
 );

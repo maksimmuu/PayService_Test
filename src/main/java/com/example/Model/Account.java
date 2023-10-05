@@ -3,15 +3,24 @@ package com.example.Model;
 import java.math.BigDecimal;
 
 public class Account {
-    private long id;
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", amount=" + amount +
+                '}';
+    }
+
+    private int id;
     private String name;
-    private BigDecimal amount;
+    private int amount;
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -23,11 +32,11 @@ public class Account {
         this.name = name;
     }
 
-    public BigDecimal getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 }
