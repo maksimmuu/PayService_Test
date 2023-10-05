@@ -3,10 +3,12 @@ package com.example.Repository;
 import com.example.AccountRowMapper;
 import com.example.Model.Account;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@Repository
 public class AccountRepository {
 
     private final JdbcTemplate jdbc;
