@@ -3,14 +3,7 @@ package com.example.Model;
 import java.math.BigDecimal;
 
 public class Account {
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", amount=" + amount +
-                '}';
-    }
+
 
     private int id;
     private String name;
@@ -38,5 +31,14 @@ public class Account {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", amount=" + amount +
+                '}';
     }
 }

@@ -18,22 +18,19 @@ public class TransferService {
         this.accountRepository = accountRepository;
     }
 
-//    @Transactional
-//    public void transferMoney(long idSender, long idReceiver, BigDecimal amount){
-//        Account sender = accountRepository.findAccountById(idSender);
-//        Account receiver = accountRepository.findAccountById(idReceiver);
-//
-//        BigDecimal senderNewAmount = sender.getAmount().subtract(amount);
-//        BigDecimal receiverNewAmount = receiver.getAmount().add(amount);
-//
-//        accountRepository.changeAmount(idSender, senderNewAmount);
-//        accountRepository.changeAmount(idReceiver, receiverNewAmount);
-//
-//    }
+    @Transactional
+    public void transferMoney(int idSender, int idReceiver, int amount) throws SQLException {
+        Account sender = accountRepository.findAccountById(idSender);
+        Account receiver = accountRepository.findAccountById(idReceiver);
 
-    public void show (){
-        System.out.println("Это дерьмо работает");
+        int senderNewAmount = sender.getAmount() - amount;
+        int receiverNewAmount = receiver.getAmount() + amount;
+
+        accountRepository.changeAmount(idSender, senderNewAmount);
+        accountRepository.changeAmount(idReceiver, receiverNewAmount);
+
     }
+
 
     public List<Account> getAllAccounts() throws SQLException {
        return accountRepository.findAllAccounts();

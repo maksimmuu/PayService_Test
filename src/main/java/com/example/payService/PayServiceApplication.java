@@ -21,6 +21,15 @@ public class PayServiceApplication {
 		TransferService transferService = context.getBean(TransferService.class);
 		System.out.println(transferService.getAllAccounts());
 
+		AccountRepository accountRepository = context.getBean(AccountRepository.class);
+		System.out.println(accountRepository.findAccountById(2));
+
+		accountRepository.changeAmount(2,435);
+		System.out.println(transferService.getAllAccounts());
+
+		transferService.transferMoney(1, 2, 100);
+
+
 //		AccountRepository accountRepository = context.getBean(AccountRepository.class);
 //		List <Account> lst = accountRepository.findAllAccounts();
 //
