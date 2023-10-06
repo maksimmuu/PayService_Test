@@ -19,7 +19,7 @@ public class TransferService {
     }
 
     @Transactional
-    public void transferMoney(int idSender, int idReceiver, int amount) throws SQLException {
+    public void transferMoney(int idSender, int idReceiver, int amount) {
         Account sender = accountRepository.findAccountById(idSender);
         Account receiver = accountRepository.findAccountById(idReceiver);
 
@@ -32,7 +32,7 @@ public class TransferService {
     }
 
 
-    public List<Account> getAllAccounts() throws SQLException {
+    public List<Account> getAllAccounts() {
        return accountRepository.findAllAccounts();
     }
 }
