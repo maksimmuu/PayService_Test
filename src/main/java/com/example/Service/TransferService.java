@@ -26,8 +26,11 @@ public class TransferService {
         Account sender = accountRepository.findAccountById(idSender);
         Account receiver = accountRepository.findAccountById(idReceiver);
 
+
         int senderNewAmount = sender.getAmount() - amount;
         int receiverNewAmount = receiver.getAmount() + amount;
+
+            if (sender.getAmount()>0 && senderNewAmount>=0){
 
         accountRepository.changeAmount(idSender, senderNewAmount);
         accountRepository.changeAmount(idReceiver, receiverNewAmount);
@@ -37,6 +40,13 @@ public class TransferService {
 
         logRepository.addLog(sender.getName() + " с id=" + sender.getId() + " перевел пользователю "
                 + receiver.getName() + " c id=" + receiver.getId()+ " " + amount + " $");
+            }
+
+        else {
+            System.out.println("Недостаточно средств для перевода");
+            logRepository.addLog("Недостаточно средств: " + sender.getName() + " с id=" + sender.getId() + " пытался перевести пользователю "
+                    + receiver.getName() + " c id=" + receiver.getId()+ " " + amount + " $" );
+        }
 
     }
 

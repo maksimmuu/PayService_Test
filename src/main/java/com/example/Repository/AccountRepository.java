@@ -28,6 +28,7 @@ public class AccountRepository {
         List <Account> allAccounts = session.createQuery("from Account").getResultList();
 
         session.getTransaction().commit();
+        session.close();
         return allAccounts;
         }
 
@@ -39,6 +40,7 @@ public class AccountRepository {
        Account account = session.get(Account.class, id);
 
         session.getTransaction().commit();
+        session.close();
 
         return account;
     }
@@ -52,6 +54,7 @@ public class AccountRepository {
         account.setAmount(amount);
 
         session.getTransaction().commit();
+        session.close();
     }
 
     public void addAccount (String name, int amount){
@@ -64,6 +67,7 @@ public class AccountRepository {
         session.save(account);
 
         session.getTransaction().commit();
+        session.close();
 
     }
 
@@ -76,6 +80,7 @@ public class AccountRepository {
         session.delete(account_del);
 
         session.getTransaction().commit();
+        session.close();
     }
 
 }
