@@ -9,15 +9,16 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class LogRepository {
 
-    private final Configuration configuration;
+    private Configuration configuration;
 
     public LogRepository(Configuration configuration) {
         this.configuration = configuration;
     }
 
     public void addLog (String logMessage){
+
         SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         Log log = new Log();
         log.setLogMessage(logMessage);
 
@@ -26,6 +27,7 @@ public class LogRepository {
         session.save(log);
 
         session.getTransaction().commit();
+        session.close();
 
     }
 }

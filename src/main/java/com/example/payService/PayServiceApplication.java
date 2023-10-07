@@ -25,10 +25,7 @@ public class PayServiceApplication {
 //
 		System.out.println(transferService.getAllAccounts());
 
-		transferService.transferMoney(1,3,340);
-		transferService.transferMoney(2,8,10);
-		transferService.transferMoney(3,1,880);
-		transferService.transferMoney(4,4,140);
+		transferService.transferMoney(1,30,1);
 
 
 

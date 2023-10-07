@@ -37,6 +37,7 @@ public class SpringConfig {
         return new org.hibernate.cfg.Configuration().addAnnotatedClass(Account.class).addAnnotatedClass(Log.class);
     }
 
+
     @Bean
     public Logger logger (){
         return Logger.getGlobal();

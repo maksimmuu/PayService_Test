@@ -5,5 +5,6 @@ insert into account (name, amount) values ('Tom', 500);
 insert into account (name, amount) values ('Nataly', 100);
 insert into account (name, amount) values ('Georgy', 900);
 
-select * from transferlogs
+select * from transferlogs;
+select * from account
 

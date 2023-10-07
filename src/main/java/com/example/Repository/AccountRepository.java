@@ -1,7 +1,4 @@
 package com.example.Repository;
-
-//import com.example.AccountRowMapper;
-import com.example.AccountRowMapper;
 import com.example.Model.Account;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,12 +11,11 @@ import java.util.List;
 @Repository
 public class AccountRepository {
 
-    private final JdbcTemplate jdbc;
     private final Configuration configuration;
 
 
-    public AccountRepository(JdbcTemplate jdbc, SessionFactory sessionFactory, Configuration configuration) {
-        this.jdbc = jdbc;
+    public AccountRepository(SessionFactory sessionFactory, Configuration configuration) {
+
         this.configuration = configuration;
 
     }
@@ -33,7 +29,6 @@ public class AccountRepository {
         List <Account> allAccounts = session.createQuery("from Account").getResultList();
 
         session.getTransaction().commit();
-        //return jdbc.query("SELECT * FROM account", new AccountRowMapper());
         return allAccounts;
         }
 
