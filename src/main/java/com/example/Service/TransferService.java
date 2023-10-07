@@ -5,7 +5,6 @@ import com.example.Repository.AccountRepository;
 import com.example.Repository.LogRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -23,7 +22,7 @@ public class TransferService {
     }
 
     @Transactional
-    public void transferMoney(int idSender, int idReceiver, int amount) {
+    public void transferMoney(int idSender, int idReceiver, int amount)  {
         Account sender = accountRepository.findAccountById(idSender);
         Account receiver = accountRepository.findAccountById(idReceiver);
 
@@ -43,7 +42,6 @@ public class TransferService {
 
 
     public List<Account> getAllAccounts() {
-
         return accountRepository.findAllAccounts();
     }
 

@@ -2,7 +2,7 @@ package com.example.Model;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
+
 
 @Entity
 @Table(name="account")
@@ -28,7 +28,7 @@ public class Account {
 
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

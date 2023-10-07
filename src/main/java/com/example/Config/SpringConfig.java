@@ -2,7 +2,6 @@ package com.example.Config;
 
 import com.example.Model.Account;
 import com.example.Model.Log;
-import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

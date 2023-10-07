@@ -1,33 +1,32 @@
 package com.example.Model;
 
-import java.math.BigDecimal;
 
 public class TransferRequest {
-    private long senderAccountId;
-    private long receiverAccountId;
-    private BigDecimal amount;
+    private int senderAccountId;
+    private int receiverAccountId;
+    private int amount;
 
-    public long getSenderAccountId() {
+    public int getSenderAccountId() {
         return senderAccountId;
     }
 
-    public void setSenderAccountId(long senderAccountId) {
+    public void setSenderAccountId(int senderAccountId) {
         this.senderAccountId = senderAccountId;
     }
 
-    public long getReceiverAccountId() {
+    public int getReceiverAccountId() {
         return receiverAccountId;
     }
 
-    public void setReceiverAccountId(long receiverAccountId) {
+    public void setReceiverAccountId(int receiverAccountId) {
         this.receiverAccountId = receiverAccountId;
     }
 
-    public BigDecimal getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 }

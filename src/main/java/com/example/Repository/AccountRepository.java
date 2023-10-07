@@ -3,7 +3,6 @@ import com.example.Model.Account;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -37,7 +36,7 @@ public class AccountRepository {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
 
-        Account account = session.get(Account.class, id);
+       Account account = session.get(Account.class, id);
 
         session.getTransaction().commit();
 
