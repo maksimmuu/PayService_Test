@@ -2,6 +2,7 @@ package com.example.Controller;
 
 import com.example.Model.Account;
 import com.example.Model.TransferRequest;
+import com.example.Service.AccountManageService;
 import com.example.Service.TransferService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,9 +15,11 @@ import java.util.List;
 public class AccountController {
 
     private final TransferService transferService;
+    private final AccountManageService accountManageService;
 
-    public AccountController(TransferService transferService) {
+    public AccountController(TransferService transferService, AccountManageService accountManageService) {
         this.transferService = transferService;
+        this.accountManageService = accountManageService;
     }
 
     @PostMapping("/transfer")
@@ -29,7 +32,7 @@ public class AccountController {
 
     @GetMapping("/accounts")
     public List<Account> getAllAccounts(){
-        return transferService.getAllAccounts();
+        return accountManageService.getAllAccounts();
     }
 
 }

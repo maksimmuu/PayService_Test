@@ -1,6 +1,7 @@
 package com.example.Service;
 
 import com.example.Model.Account;
+import com.example.Model.Log;
 import com.example.Repository.AccountRepository;
 import com.example.Repository.LogRepository;
 import org.springframework.stereotype.Service;
@@ -46,26 +47,12 @@ public class TransferService {
                     + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $");
 
             logRepository.addLog(sender.getName() + " с id=" + sender.getId() + " перевел пользователю "
-                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $");
+                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender);
         } else {
             System.out.println("Недостаточно средств для перевода");
             logRepository.addLog("Недостаточно средств: " + sender.getName() + " с id=" + sender.getId() + " пытался перевести пользователю "
-                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $");
+                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender);
         }
     }
 
-    public List<Account> getAllAccounts() {
-        return accountRepository.findAllAccounts();
-    }
-
-
-    public void createAccount (String name, int amount){
-        accountRepository.addAccount(name, amount);
-        System.out.println("Аккаунт добавлен!");
-    }
-
-    public void deleteAccount (int id){
-        accountRepository.deleteAccount(id);
-        System.out.println("Аккаунт удален !");
-    }
 }

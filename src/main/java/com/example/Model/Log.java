@@ -14,6 +14,18 @@ public class Log {
     @Column(name = "logMessage")
     private String logMessage;
 
+    @ManyToOne
+    @JoinColumn(name = "sender_id", referencedColumnName = "id")
+    private Account senderAccount;
+
+    public Account getSenderAccount() {
+        return senderAccount;
+    }
+
+    public void setSenderAccount(Account senderAccount) {
+        this.senderAccount = senderAccount;
+    }
+
     public String getLogMessage() {
         return logMessage;
     }

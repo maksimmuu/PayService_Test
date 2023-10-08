@@ -2,6 +2,8 @@ package com.example.Model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name="account")
@@ -21,6 +23,9 @@ public class Account {
     @Column(name="country")
     private String country;
 
+    @OneToMany(mappedBy = "senderAccount", fetch = FetchType.EAGER)
+    private List<Log> logs;
+
     public Account(String name, int amount) {
         this.name = name;
         this.amount = amount;
@@ -28,6 +33,14 @@ public class Account {
 
     public Account() {
 
+    }
+
+    public List<Log> getLogs() {
+        return logs;
+    }
+
+    public void setLogs(List<Log> logs) {
+        this.logs = logs;
     }
 
     public int getId() {
