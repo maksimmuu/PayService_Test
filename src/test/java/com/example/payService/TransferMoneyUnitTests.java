@@ -36,10 +36,12 @@ public class TransferMoneyUnitTests {
         Account sender = new Account();
         sender.setId(2);
         sender.setAmount(1000);
+        sender.setCountry("Russia");
 
         Account receiver = new Account();
         receiver.setId(4);
         receiver.setAmount(500);
+        receiver.setCountry("Russia");
 
         given(accountRepository.findAccountById(sender.getId())).willReturn(sender);
 

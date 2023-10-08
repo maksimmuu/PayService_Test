@@ -22,34 +22,37 @@ public class TransferService {
     }
 
     @Transactional
-    public void transferMoney(int idSender, int idReceiver, int amount)  {
+    public void transferMoney(int idSender, int idReceiver, int amount) {
         Account sender = accountRepository.findAccountById(idSender);
         Account receiver = accountRepository.findAccountById(idReceiver);
 
+        double senderNewAmount = 0;
 
-        int senderNewAmount = sender.getAmount() - amount;
-        int receiverNewAmount = receiver.getAmount() + amount;
-
-            if (sender.getAmount()>0 && senderNewAmount>=0){
-
-        accountRepository.changeAmount(idSender, senderNewAmount);
-        accountRepository.changeAmount(idReceiver, receiverNewAmount);
-
-        logger.info(sender.getName() + " с id=" + sender.getId() + " перевел пользователю "
-                + receiver.getName() + " c id=" + receiver.getId()+ " " + amount + " $");
-
-        logRepository.addLog(sender.getName() + " с id=" + sender.getId() + " перевел пользователю "
-                + receiver.getName() + " c id=" + receiver.getId()+ " " + amount + " $");
-            }
-
-        else {
-            System.out.println("Недостаточно средств для перевода");
-            logRepository.addLog("Недостаточно средств: " + sender.getName() + " с id=" + sender.getId() + " пытался перевести пользователю "
-                    + receiver.getName() + " c id=" + receiver.getId()+ " " + amount + " $" );
+        if (!sender.getCountry().equals(receiver.getCountry())) {
+            senderNewAmount = sender.getAmount() - (amount + amount * 0.05);
+            senderNewAmount=Math.round(senderNewAmount*100.0)/100.0;
+        }else {
+            senderNewAmount = sender.getAmount() - amount;
         }
 
-    }
+        double receiverNewAmount = receiver.getAmount() + amount;
 
+        if (sender.getAmount() > 0 && senderNewAmount >= 0) {
+
+            accountRepository.changeAmount(idSender, senderNewAmount);
+            accountRepository.changeAmount(idReceiver, receiverNewAmount);
+
+            logger.info(sender.getName() + " с id=" + sender.getId() + " перевел пользователю "
+                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $");
+
+            logRepository.addLog(sender.getName() + " с id=" + sender.getId() + " перевел пользователю "
+                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $");
+        } else {
+            System.out.println("Недостаточно средств для перевода");
+            logRepository.addLog("Недостаточно средств: " + sender.getName() + " с id=" + sender.getId() + " пытался перевести пользователю "
+                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $");
+        }
+    }
 
     public List<Account> getAllAccounts() {
         return accountRepository.findAllAccounts();

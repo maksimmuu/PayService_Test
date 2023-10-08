@@ -17,7 +17,7 @@ public class PayServiceApplication {
 
 		System.out.println(transferService.getAllAccounts());
 
-		transferService.transferMoney(5,1,0);
+		transferService.transferMoney(6,5,67);
 
 	}
 

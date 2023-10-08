@@ -3,7 +3,6 @@ package com.example.Model;
 import jakarta.persistence.*;
 
 
-
 @Entity
 @Table(name="account")
 public class Account {
@@ -17,7 +16,10 @@ public class Account {
     private String name;
 
     @Column(name="amount")
-    private int amount;
+    private double amount;
+
+    @Column(name="country")
+    private String country;
 
     public Account(String name, int amount) {
         this.name = name;
@@ -44,12 +46,20 @@ public class Account {
         this.name = name;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override
@@ -58,6 +68,7 @@ public class Account {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", amount=" + amount +
+                ", country='" + country + '\'' +
                 '}';
     }
 }

@@ -45,7 +45,7 @@ public class AccountRepository {
         return account;
     }
 
-    public void changeAmount (int id, int amount)  {
+    public void changeAmount (int id, double amount)  {
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
