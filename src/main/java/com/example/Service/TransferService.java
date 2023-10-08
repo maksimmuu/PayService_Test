@@ -1,12 +1,10 @@
 package com.example.Service;
 
 import com.example.Model.Account;
-import com.example.Model.Log;
 import com.example.Repository.AccountRepository;
 import com.example.Repository.LogRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.List;
 import java.util.logging.Logger;
 
 @Service
@@ -47,11 +45,13 @@ public class TransferService {
                     + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $");
 
             logRepository.addLog("Успешный перевод "+sender.getName() + " с id=" + sender.getId() + " перевел пользователю "
-                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender, amount);
+                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender, amount,
+                    sender.getName(), receiver.getId(), receiver.getName());
         } else {
             System.out.println("Недостаточно средств для перевода");
             logRepository.addLog("Недостаточно средств: " + sender.getName() + " с id=" + sender.getId() + " пытался перевести пользователю "
-                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender, 0.0);
+                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender, 0.0,
+                    sender.getName(), receiver.getId(), receiver.getName());
         }
     }
 
