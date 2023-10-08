@@ -35,4 +35,8 @@ public class AccountManageService {
         System.out.println("Аккаунт удален !");
     }
 
+    public double sumSendAllById(int id){
+       return accountRepository.sumSendById(id);
+    }
+
 }

@@ -56,6 +56,20 @@ public class AccountRepository {
         return sender.getLogs();
     }
 
+    public double sumSendById(int sender_id){
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+
+        List<Log> lst_log = this.findLogsBySenderId(sender_id);
+
+        double sum = lst_log.stream().mapToDouble(l->l.getSendAmount()).sum();
+
+        session.close();
+
+        return Math.round(sum*100.0)/100.0;
+    }
+
     public void changeAmount (int id, double amount)  {
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();

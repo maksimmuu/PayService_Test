@@ -16,13 +16,14 @@ public class LogRepository {
         this.configuration = configuration;
     }
 
-    public void addLog (String logMessage, Account sender){
+    public void addLog (String logMessage, Account sender, double amount){
 
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
         Log log = new Log();
         log.setLogMessage(logMessage);
         log.setSenderAccount(sender);
+        log.setSendAmount(amount);
 
         session.beginTransaction();
 

@@ -19,16 +19,11 @@ public class PayServiceApplication {
 
 		AccountManageService accountManageService = context.getBean(AccountManageService.class);
 
+		transferService.transferMoney(1,2,180);
 
-		//transferService.transferMoney(1,2,65);
 
-		for (Log l: accountManageService.getLogBySenderId(1)) {
-			System.out.println(l);
-		}
+		System.out.println(accountManageService.sumSendAllById(1));
 
-		accountManageService.deleteAccount(8);
-		accountManageService.deleteAccount(9);
-		System.out.println(accountManageService.getAllAccounts());
 
 	}
 

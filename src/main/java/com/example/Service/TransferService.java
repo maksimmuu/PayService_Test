@@ -47,11 +47,11 @@ public class TransferService {
                     + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $");
 
             logRepository.addLog(sender.getName() + " с id=" + sender.getId() + " перевел пользователю "
-                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender);
+                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender, amount);
         } else {
             System.out.println("Недостаточно средств для перевода");
             logRepository.addLog("Недостаточно средств: " + sender.getName() + " с id=" + sender.getId() + " пытался перевести пользователю "
-                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender);
+                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender, amount);
         }
     }
 

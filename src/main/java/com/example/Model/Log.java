@@ -14,6 +14,9 @@ public class Log {
     @Column(name = "logMessage")
     private String logMessage;
 
+    @Column(name = "send_amount")
+    private double sendAmount;
+
     @ManyToOne
     @JoinColumn(name = "sender_id", referencedColumnName = "id")
     private Account senderAccount;
@@ -24,6 +27,14 @@ public class Log {
 
     public void setSenderAccount(Account senderAccount) {
         this.senderAccount = senderAccount;
+    }
+
+    public double getSendAmount() {
+        return sendAmount;
+    }
+
+    public void setSendAmount(double sendAmount) {
+        this.sendAmount = sendAmount;
     }
 
     public String getLogMessage() {
@@ -39,6 +50,8 @@ public class Log {
         return "Log{" +
                 "id=" + id +
                 ", logMessage='" + logMessage + '\'' +
+                ", sendAmount=" + sendAmount +
+                ", senderAccount=" + senderAccount +
                 '}';
     }
 }
