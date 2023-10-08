@@ -11,7 +11,10 @@ create table transferLogs (
                          send_amount float NOT NULL,
                          logMessage VARCHAR(1000) NOT NULL
 
+
 );
+
+
 
 
 

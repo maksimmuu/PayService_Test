@@ -46,12 +46,12 @@ public class TransferService {
             logger.info(sender.getName() + " с id=" + sender.getId() + " перевел пользователю "
                     + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $");
 
-            logRepository.addLog(sender.getName() + " с id=" + sender.getId() + " перевел пользователю "
+            logRepository.addLog("Успешный перевод "+sender.getName() + " с id=" + sender.getId() + " перевел пользователю "
                     + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender, amount);
         } else {
             System.out.println("Недостаточно средств для перевода");
             logRepository.addLog("Недостаточно средств: " + sender.getName() + " с id=" + sender.getId() + " пытался перевести пользователю "
-                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender, amount);
+                    + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender, 0.0);
         }
     }
 
