@@ -19,10 +19,9 @@ public class PayServiceApplication {
 
 		AccountManageService accountManageService = context.getBean(AccountManageService.class);
 
-		transferService.transferMoney(1,3,180);
+		transferService.transferMoney(2,1,540000);
 
-
-		System.out.println(accountManageService.sumSendAllById(2));
+		//System.out.println(accountManageService.sumSendAllById(2));
 
 
 	}

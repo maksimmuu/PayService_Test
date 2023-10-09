@@ -7,6 +7,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 @Repository
 public class LogRepository {
 
@@ -21,7 +24,9 @@ public class LogRepository {
 
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Log log = new Log(sender, senderName, receiverId, receiverName, amount, logMessage);
+
+        Timestamp timestamp = new Timestamp(new Date().getTime());
+        Log log = new Log(sender, senderName, receiverId, receiverName, amount, logMessage, timestamp);
 
         session.beginTransaction();
 

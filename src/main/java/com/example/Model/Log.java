@@ -2,6 +2,8 @@ package com.example.Model;
 
 import jakarta.persistence.*;
 
+import java.sql.Timestamp;
+
 @Entity
 @Table(name="transferlogs")
 public class Log {
@@ -30,13 +32,18 @@ public class Log {
     @Column(name = "logMessage")
     private String logMessage;
 
-    public Log(Account senderAccount, String senderName, int receiverId, String receiverName, double sendAmount, String logMessage) {
+    @Column(name="time")
+    private Timestamp timestamp;
+
+    public Log(Account senderAccount, String senderName, int receiverId,
+               String receiverName, double sendAmount, String logMessage, Timestamp timestamp) {
         this.senderAccount = senderAccount;
         this.senderName = senderName;
         this.receiverId = receiverId;
         this.receiverName = receiverName;
         this.sendAmount = sendAmount;
         this.logMessage = logMessage;
+        this.timestamp = timestamp;
     }
 
     public Log() {
@@ -91,6 +98,14 @@ public class Log {
         this.logMessage = logMessage;
     }
 
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
     @Override
     public String toString() {
         return "Log{" +
@@ -101,6 +116,7 @@ public class Log {
                 ", receiverName='" + receiverName + '\'' +
                 ", sendAmount=" + sendAmount +
                 ", logMessage='" + logMessage + '\'' +
+                ", timestamp=" + timestamp +
                 '}';
     }
 }

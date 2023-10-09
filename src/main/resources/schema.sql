@@ -3,6 +3,7 @@ create table account (
                          name VARCHAR(50) NOT NULL,
                          amount float NOT NULL,
                          country varchar(50) NOT NULL
+
 );
 
 create table transferLogs (
@@ -14,8 +15,9 @@ create table transferLogs (
                          send_amount float NOT NULL,
                          logMessage VARCHAR(1000) NOT NULL
 
-
 );
+
+alter table transferlogs add column time timestamp default NULL;
 
 
 
