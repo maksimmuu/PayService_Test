@@ -1,5 +1,7 @@
 package com.example.payService;
 import com.example.Model.Account;
+import com.example.Model.PermissionToTransfer;
+import com.example.Repository.AccountPermissionRepository;
 import com.example.Repository.AccountRepository;
 import com.example.Repository.LogRepository;
 import com.example.Service.TransferService;
@@ -34,14 +36,19 @@ public class TransferMoneyUnitTests {
     public void transferMoneyHappyFlow ()  {
 
         Account sender = new Account();
+        PermissionToTransfer permissionToTransfer = new PermissionToTransfer();
         sender.setId(2);
         sender.setAmount(1000);
         sender.setCountry("Russia");
+        sender.setPermissionToTransfer(permissionToTransfer);
 
         Account receiver = new Account();
+        PermissionToTransfer permissionToTransfer1 = new PermissionToTransfer();
         receiver.setId(4);
         receiver.setAmount(500);
         receiver.setCountry("Russia");
+        receiver.setPermissionToTransfer(permissionToTransfer1);
+
 
         given(accountRepository.findAccountById(sender.getId())).willReturn(sender);
 
