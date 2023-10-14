@@ -2,6 +2,7 @@ package com.example.Config;
 
 import com.example.Model.Account;
 import com.example.Model.Log;
+import com.example.Model.PermissionToTransfer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +34,8 @@ public class SpringConfig {
 
     @Bean
     public org.hibernate.cfg.Configuration configuration () {
-        return new org.hibernate.cfg.Configuration().addAnnotatedClass(Account.class).addAnnotatedClass(Log.class);
+        return new org.hibernate.cfg.Configuration().addAnnotatedClass(Account.class).addAnnotatedClass(Log.class)
+                .addAnnotatedClass(PermissionToTransfer.class);
     }
 
 

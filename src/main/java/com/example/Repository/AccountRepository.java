@@ -14,7 +14,7 @@ public class AccountRepository {
     private final Configuration configuration;
 
 
-    public AccountRepository(SessionFactory sessionFactory, Configuration configuration) {
+    public AccountRepository(Configuration configuration) {
 
         this.configuration = configuration;
 

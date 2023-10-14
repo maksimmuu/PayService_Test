@@ -2,6 +2,7 @@ package com.example.Service;
 
 import com.example.Model.Account;
 import com.example.Model.Log;
+import com.example.Repository.AccountPermissionRepository;
 import com.example.Repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +12,13 @@ import java.util.List;
 public class AccountManageService {
 
     private AccountRepository accountRepository;
+    private AccountPermissionRepository accountPermissionRepository;
 
-    public AccountManageService(AccountRepository accountRepository) {
+
+    public AccountManageService(AccountRepository accountRepository, AccountPermissionRepository accountPermissionRepository) {
+
         this.accountRepository = accountRepository;
+        this.accountPermissionRepository = accountPermissionRepository;
     }
 
     public List<Account> getAllAccounts() {
@@ -37,6 +42,16 @@ public class AccountManageService {
 
     public double sumSendAllById(int id){
        return accountRepository.sumSendById(id);
+    }
+
+    public void blockAccount (int id){
+        accountPermissionRepository.setBlock(id);
+        System.out.println("Аккаунт с id=" + id + " заблокирован !");
+    }
+
+    public void unblockAccount (int id){
+        accountPermissionRepository.deleteBlock(id);
+        System.out.println("Аккаунт с id=" + id + " разблокирован !");
     }
 
 }

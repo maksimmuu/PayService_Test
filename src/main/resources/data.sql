@@ -7,5 +7,6 @@ insert into account (name, amount, country) values ('Georgy', 900, 'USA');
 
 select * from transferlogs;
 select * from account;
+select * from permissiontotransfer;
 
 

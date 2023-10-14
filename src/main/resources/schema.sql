@@ -17,7 +17,14 @@ create table transferLogs (
 
 );
 
-alter table transferlogs add column time timestamp default NULL;
+create table permissionToTransfer (
+    account_id int primary key REFERENCES account(id) on DELETE cascade,
+    block_account boolean NOT NULL
+
+);
+
+
+
 
 
 

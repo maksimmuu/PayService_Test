@@ -26,14 +26,15 @@ public class Account {
     @OneToMany(mappedBy = "senderAccount", fetch = FetchType.EAGER)
     private List<Log> logs;
 
+    @OneToOne(mappedBy = "accountId")
+    private PermissionToTransfer permissionToTransfer;
+
     public Account(String name, int amount) {
         this.name = name;
         this.amount = amount;
     }
 
-    public Account() {
-
-    }
+    public Account() {}
 
     public List<Log> getLogs() {
         return logs;
@@ -73,6 +74,14 @@ public class Account {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public PermissionToTransfer getPermissionToTransfer() {
+        return permissionToTransfer;
+    }
+
+    public void setPermissionToTransfer(PermissionToTransfer permissionToTransfer) {
+        this.permissionToTransfer = permissionToTransfer;
     }
 
     @Override
