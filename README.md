@@ -11,7 +11,7 @@
 В классе AccountManageService для управления аккаунтами реализованы следующие методы:
 
 		accountManageService.createAccount("Paul", 300.0, "Spain"); // создание аккаунта
-    accountManageService.deleteAccount(9); // удаление аккаунта
+                accountManageService.deleteAccount(9); // удаление аккаунта
 		accountManageService.blockAccount(10); // блокировка аккаунта по id
 		accountManageService.unblockAccount(10); // разблокировка аккаунта по id
 		accountManageService.getAllAccounts(); // вывод всех аккаунтов
