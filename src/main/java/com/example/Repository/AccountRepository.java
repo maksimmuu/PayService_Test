@@ -14,14 +14,12 @@ public class AccountRepository {
     private final Configuration configuration;
 
 
-    public AccountRepository(Configuration configuration) {
-
+    public AccountRepository( Configuration configuration) {
         this.configuration = configuration;
-
     }
 
-
     public List<Account> findAllAccounts() {
+
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
@@ -34,6 +32,7 @@ public class AccountRepository {
         }
 
     public Account findAccountById (int id) {
+
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
@@ -47,6 +46,7 @@ public class AccountRepository {
     }
 
     public List <Log> findLogsBySenderId (int sender_id){
+
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
@@ -57,6 +57,7 @@ public class AccountRepository {
     }
 
     public double sumSendById(int sender_id){
+
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
@@ -66,11 +67,12 @@ public class AccountRepository {
         double sum = lst_log.stream().mapToDouble(l->l.getSendAmount()).sum();
 
         session.close();
-
         return Math.round(sum*100.0)/100.0;
     }
 
     public void changeAmount (int id, double amount)  {
+
+
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
@@ -88,6 +90,7 @@ public class AccountRepository {
         account.setAmount(amount);
         account.setCountry(country);
 
+
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
@@ -100,6 +103,7 @@ public class AccountRepository {
     }
 
     public void deleteAccount (int id){
+
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();

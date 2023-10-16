@@ -1,7 +1,6 @@
 package com.example.payService;
 import com.example.Model.Account;
 import com.example.Model.PermissionToTransfer;
-import com.example.Repository.AccountPermissionRepository;
 import com.example.Repository.AccountRepository;
 import com.example.Repository.LogRepository;
 import com.example.Service.TransferService;
@@ -10,9 +9,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import javax.security.auth.login.AccountNotFoundException;
-import java.util.Optional;
 import java.util.logging.Logger;
 
 import static org.mockito.BDDMockito.given;

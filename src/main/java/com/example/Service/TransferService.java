@@ -24,15 +24,11 @@ public class TransferService {
     }
 
     @Transactional
-    public void transferMoney(int idSender, int idReceiver, int amount) {
+    public void transferMoney(int idSender, int idReceiver, double amount) {
         Account sender = accountRepository.findAccountById(idSender);
         Account receiver = accountRepository.findAccountById(idReceiver);
 
-        if (sender.getPermissionToTransfer().isBlockAccount()) {
-            logger.info("Аккаунт с id=" + idSender + " заблокирован, перевод не будет произведен !");
-            logRepository.addLog("Аккаунт с id=" + idSender + " заблокирован, перевод не будет произведен"
-                    , sender, amount, sender.getName(), receiver.getId(), receiver.getName());
-        } else {
+        if (sender.getPermissionToTransfer() == null || !sender.getPermissionToTransfer().isBlockAccount()) {
 
             double senderNewAmount = 0;
 
@@ -65,6 +61,12 @@ public class TransferService {
                                 + receiver.getName() + " c id=" + receiver.getId() + " " + amount + " $", sender, 0.0,
                         sender.getName(), receiver.getId(), receiver.getName());
             }
+        }
+        else {
+            logger.info("Аккаунт с id=" + idSender + " заблокирован, перевод не будет произведен !");
+            logRepository.addLog("Аккаунт с id=" + idSender + " заблокирован, перевод не будет произведен"
+                    , sender, 0.0, sender.getName(), receiver.getId(), receiver.getName());
+
         }
     }
 
